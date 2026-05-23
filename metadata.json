@@ -1,0 +1,6 @@
+{
+  "name": "MS Chat",
+  "description": "A full-featured real-time chat application inspired by WhatsApp Web, built using React, Vite, Tailwind CSS, and Firebase.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

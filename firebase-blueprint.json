@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "The user profile data for each registered user",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "online": { "type": "boolean" },
+        "lastSeen": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "pinEnabled": { "type": "boolean" },
+        "pinCode": { "type": "string" }
+      },
+      "required": ["email", "displayName", "online", "createdAt", "updatedAt"]
+    },
+    "Message": {
+      "title": "Chat Message",
+      "description": "A single one-to-one message between two users",
+      "type": "object",
+      "properties": {
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "text": { "type": "string" },
+        "fileURL": { "type": "string" },
+        "fileType": { "type": "string" },
+        "fileName": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["from", "to", "timestamp", "read"]
+    },
+    "ChatRoom": {
+      "title": "Chat Room",
+      "description": "Metadata for a direct chat room between two users",
+      "type": "object",
+      "properties": {
+        "participants": { "type": "array" },
+        "lastMessage": { "type": "string" },
+        "lastMessageTimestamp": { "type": "string", "format": "date-time" },
+        "unreadCount": { "type": "object" },
+        "typing": { "type": "object" }
+      },
+      "required": ["participants", "lastMessageTimestamp", "unreadCount"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "One-to-one messages"
+    },
+    "/chats/{chatId}": {
+      "schema": "ChatRoom",
+      "description": "Chat metadata and summary info"
+    }
+  }
+}
